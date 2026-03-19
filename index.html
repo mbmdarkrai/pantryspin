@@ -4,19 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🍳 PantrySpin.co.uk</title>
-    
-    <!-- AdSense Verification -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
 
-    <style>...
-</head>
+    <!-- AdSense verification: KEEP EXACTLY THIS LINE -->
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617858925531368"
+        crossorigin="anonymous"></script>
 
-    <style>
-        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍳 Recipe Randomizer</title>
     <style>
         body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
         .input-group { margin: 20px 0; }
@@ -32,21 +25,23 @@
 </head>
 <body>
     <h1>🍳 Recipe Randomizer</h1>
-<div style="text-align:center;padding:15px;background:#e8f5e8;border-radius:10px;margin:20px 0;font-size:14px;">
-🛒 <a href="[https://amzn.to/3Nz17IT]" target="_blank">Chicken</a> • 
-<a href="[https://amzn.to/4dxkdJP]" target="_blank">Rice</a> • 
-<a href="[https://amzn.to/4bjm0AV]" target="_blank">Soy Sauce</a> 
-<small style="display:block;color:#666;">(Amazon affiliate)</small>
-</div>
 
-    
+    <!-- Amazon affiliate links (no square brackets in href) -->
+    <div style="text-align:center;padding:15px;background:#e8f5e8;border-radius:10px;margin:20px 0;font-size:14px;">
+        🛒
+        <a href="https://amzn.to/3Nz17IT" target="_blank">Chicken</a> •
+        <a href="https://amzn.to/4dxkdJP" target="_blank">Rice</a> •
+        <a href="https://amzn.to/4bjm0AV" target="_blank">Soy Sauce</a>
+        <small style="display:block;color:#666;">(Amazon affiliate)</small>
+    </div>
+
     <p>Enter ingredients you have (comma‑separated), hit randomize → get meal ideas!</p>
-    
+
     <div class="input-group">
         <input id="ingredients" placeholder="e.g. chicken, rice, broccoli, garlic, soy sauce" />
         <button onclick="randomize()">Generate Recipe 🎲</button>
     </div>
-    
+
     <div id="output"></div>
 
     <script>
@@ -60,26 +55,43 @@
         ];
 
         function randomize() {
-            const userIngs = document.getElementById('ingredients').value.toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+            const userIngs = document.getElementById('ingredients').value.toLowerCase()
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean);
             if (userIngs.length < 1) return alert('Add some ingredients!');
-            
-            const matches = recipes.filter(r => 
+
+            const matches = recipes.filter(r =>
                 r.ingredients.some(ing => userIngs.includes(ing.toLowerCase()))
             );
             if (matches.length === 0) {
-                document.getElementById('output').innerHTML = '<p>No matches—try broader ingredients like "rice" or "chicken".</p>';
+                document.getElementById('output').innerHTML =
+                    '<p>No matches—try broader ingredients like "rice" or "chicken".</p>';
                 return;
             }
-            
+
             const recipe = matches[Math.floor(Math.random() * matches.length)];
-            const missing = recipe.ingredients.filter(ing => !userIngs.includes(ing.toLowerCase()));
-            
+            const missing = recipe.ingredients.filter(
+                ing => !userIngs.includes(ing.toLowerCase())
+            );
+
             document.getElementById('output').innerHTML = `
                 <div class="recipe">
                     <h2>${recipe.name} (${recipe.time}min, ~${recipe.calories}cal)</h2>
                     <h3>You have:</h3>
-                    <ul class="ingredients">${recipe.ingredients.filter(ing => userIngs.includes(ing.toLowerCase())).map(ing => `>✅ ${ing}</li>`).join('')}</ul>
-                    ${missing.length ? `<h3>Need to buy:</h3><ul class="ingredients">${missing.map(ing => `>❌ ${ing}</li>`).join('')}</ul>` : '<p>✅ All ingredients ready!</p>'}
+                    <ul class="ingredients">
+                        ${recipe.ingredients
+                            .filter(ing => userIngs.includes(ing.toLowerCase()))
+                            .map(ing => `<li>✅ ${ing}</li>`).join('')}
+                    </ul>
+                    ${
+                        missing.length
+                            ? `<h3>Need to buy:</h3>
+                               <ul class="ingredients">
+                                 ${missing.map(ing => `<li class="missing">❌ ${ing}</li>`).join('')}
+                               </ul>`
+                            : '<p>✅ All ingredients ready!</p>'
+                    }
                     <h3>Instructions:</h3>
                     <p>${recipe.instructions}</p>
                     <button onclick="randomize()">New Recipe 🎲</button>
