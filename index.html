@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍳 PantrySpin.co.uk</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍳 Recipe Randomizer</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
+        .input-group { margin: 20px 0; }
+        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #059669; }
+        .recipe { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px 0; }
+        .ingredients { list-style: none; padding: 0; }
+        .ingredients li { background: #ecfdf5; padding: 8px; margin: 4px 0; border-radius: 6px; }
+        .missing { background: #fef3c7; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>🍳 Recipe Randomizer</h1>
+    <p>Enter ingredients you have (comma‑separated), hit randomize → get meal ideas!</p>
+    
+    <div class="input-group">
+        <input id="ingredients" placeholder="e.g. chicken, rice, broccoli, garlic, soy sauce" />
+        <button onclick="randomize()">Generate Recipe 🎲</button>
+    </div>
+    
+    <div id="output"></div>
+
+    <script>
+        const recipes = [
+            {name: "Chicken Fried Rice", ingredients: ["chicken", "rice", "egg", "soy sauce", "garlic"], instructions: "Cook rice. Stir‑fry chicken & garlic, add egg & veggies, mix in rice & soy. 20min.", time: 20, calories: 550},
+            {name: "Veggie Pasta", ingredients: ["pasta", "tomato", "garlic", "onion", "basil"], instructions: "Boil pasta. Sauté veggies, add tomato sauce. Toss together. 15min.", time: 15, calories: 400},
+            {name: "Quinoa Salad", ingredients: ["quinoa", "cucumber", "tomato", "feta", "olive oil"], instructions: "Cook quinoa. Chop veggies, mix with oil & feta. Chill. 25min.", time: 25, calories: 380},
+            {name: "Chickpea Curry", ingredients: ["chickpeas", "spinach", "coconut milk", "curry powder"], instructions: "Simmer chickpeas in coconut milk & curry. Add spinach. Serve with rice. 30min.", time: 30, calories: 450},
+            {name: "Tofu Stir Fry", ingredients: ["tofu", "broccoli", "soy sauce", "ginger"], instructions: "Stir‑fry tofu & broccoli, add soy & ginger. 15min.", time: 15, calories: 320},
+            {name: "Lentil Soup", ingredients: ["lentils", "carrot", "onion", "cumin"], instructions: "Sauté onion/carrot, add lentils & spices, simmer 30min.", time: 35, calories: 300}
+        ];
+
+        function randomize() {
+            const userIngs = document.getElementById('ingredients').value.toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+            if (userIngs.length < 1) return alert('Add some ingredients!');
+            
+            const matches = recipes.filter(r => 
+                r.ingredients.some(ing => userIngs.includes(ing.toLowerCase()))
+            );
+            if (matches.length === 0) {
+                document.getElementById('output').innerHTML = '<p>No matches—try broader ingredients like "rice" or "chicken".</p>';
+                return;
+            }
+            
+            const recipe = matches[Math.floor(Math.random() * matches.length)];
+            const missing = recipe.ingredients.filter(ing => !userIngs.includes(ing.toLowerCase()));
+            
+            document.getElementById('output').innerHTML = `
+                <div class="recipe">
+                    <h2>${recipe.name} (${recipe.time}min, ~${recipe.calories}cal)</h2>
+                    <h3>You have:</h3>
+                    <ul class="ingredients">${recipe.ingredients.filter(ing => userIngs.includes(ing.toLowerCase())).map(ing => `>✅ ${ing}</li>`).join('')}</ul>
+                    ${missing.length ? `<h3>Need to buy:</h3><ul class="ingredients">${missing.map(ing => `>❌ ${ing}</li>`).join('')}</ul>` : '<p>✅ All ingredients ready!</p>'}
+                    <h3>Instructions:</h3>
+                    <p>${recipe.instructions}</p>
+                    <button onclick="randomize()">New Recipe 🎲</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
