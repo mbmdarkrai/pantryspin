@@ -1,115 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍳 PantrySpin.co.uk</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍳 PantrySpin.co.uk</title>
 
-    <!-- AdSense verification: KEEP EXACTLY THIS LINE -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617858925531368"
-     crossorigin="anonymous"></script>
-    >
+  <!-- AdSense verification: KEEP EXACTLY THIS LINE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617858925531368"
+    crossorigin="anonymous"></script>
 
-    <style>
-        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
-        .input-group { margin: 20px 0; }
-        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        button { background: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; }
-        button:hover { background: #059669; }
-        .recipe { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px 0; }
-        .ingredients { list-style: none; padding: 0; }
-        .ingredients li { background: #ecfdf5; padding: 8px; margin: 4px 0; border-radius: 6px; }
-        .missing { background: #fef3c7; }
-        ul { padding-left: 20px; }
-    </style>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
+    .input-group { margin: 20px 0; }
+    input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+    button { background: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; }
+    button:hover { background: #059669; }
+    .recipe { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px 0; }
+    .ingredients { list-style: none; padding: 0; }
+    .ingredients li { background: #ecfdf5; padding: 8px; margin: 4px 0; border-radius: 6px; }
+    .missing { background: #fef3c7; }
+    ul { padding-left: 20px; }
+  </style>
 </head>
 <body>
-    <h1>🍳 Recipe Randomizer</h1>
+  <h1>🍳 Recipe Randomizer</h1>
 
-    <!-- Amazon affiliate links (no square brackets in href) -->
-    <div style="text-align:center;padding:15px;background:#e8f5e8;border-radius:10px;margin:20px 0;font-size:14px;">
-        🛒
-        <a href="https://amzn.to/3Nz17IT" target="_blank">Chicken</a> •
-        <a href="https://amzn.to/4dxkdJP" target="_blank">Rice</a> •
-        <a href="https://amzn.to/4bjm0AV" target="_blank">Soy Sauce</a>
-        <small style="display:block;color:#666;">(Amazon affiliate)</small>
-    </div>
+  <!-- Amazon affiliate links -->
+  <div style="text-align:center;padding:15px;background:#e8f5e8;border-radius:10px;margin:20px 0;font-size:14px;">
+    🛒
+    <a href="https://amzn.to/3Nz17IT" target="_blank" rel="noopener noreferrer">Chicken</a> •
+    <a href="https://amzn.to/4dxkdJP" target="_blank" rel="noopener noreferrer">Rice</a> •
+    <a href="https://amzn.to/4bjm0AV" target="_blank" rel="noopener noreferrer">Soy Sauce</a>
+    <small style="display:block;color:#666;">(Amazon affiliate)</small>
+  </div>
 
-    <p>Enter ingredients you have (comma‑separated), hit randomize → get meal ideas!</p>
+  <p>Enter ingredients you have (comma-separated), hit randomize and get meal ideas.</p>
 
-    <div class="input-group">
-        <input id="ingredients" placeholder="e.g. chicken, rice, broccoli, garlic, soy sauce" />
-        <button onclick="randomize()">Generate Recipe 🎲</button>
-    </div>
+  <div class="input-group">
+    <input id="ingredients" placeholder="e.g. chicken, rice, broccoli, garlic, soy sauce" />
+    <button onclick="randomize()">Generate Recipe 🎲</button>
+  </div>
 
-    <div id="output"></div>
+  <div id="output"></div>
 
-    <script>
-        const recipes = [
-            {name: "Chicken Fried Rice", ingredients: ["chicken", "rice", "egg", "soy sauce", "garlic"], instructions: "Cook rice. Stir‑fry chicken & garlic, add egg & veggies, mix in rice & soy. 20min.", time: 20, calories: 550},
-            {name: "Veggie Pasta", ingredients: ["pasta", "tomato", "garlic", "onion", "basil"], instructions: "Boil pasta. Sauté veggies, add tomato sauce. Toss together. 15min.", time: 15, calories: 400},
-            {name: "Quinoa Salad", ingredients: ["quinoa", "cucumber", "tomato", "feta", "olive oil"], instructions: "Cook quinoa. Chop veggies, mix with oil & feta. Chill. 25min.", time: 25, calories: 380},
-            {name: "Chickpea Curry", ingredients: ["chickpeas", "spinach", "coconut milk", "curry powder"], instructions: "Simmer chickpeas in coconut milk & curry. Add spinach. Serve with rice. 30min.", time: 30, calories: 450},
-            {name: "Tofu Stir Fry", ingredients: ["tofu", "broccoli", "soy sauce", "ginger"], instructions: "Stir‑fry tofu & broccoli, add soy & ginger. 15min.", time: 15, calories: 320},
-            {name: "Lentil Soup", ingredients: ["lentils", "carrot", "onion", "cumin"], instructions: "Sauté onion/carrot, add lentils & spices, simmer 30min.", time: 35, calories: 300}
-        ];
+  <script>
+    const recipes = [
+      { name: "Chicken Fried Rice", ingredients: ["chicken", "rice", "egg", "soy sauce", "garlic"], instructions: "Cook rice. Stir-fry chicken and garlic, add egg and veggies, mix in rice and soy. 20 min.", time: 20, calories: 550 },
+      { name: "Veggie Pasta", ingredients: ["pasta", "tomato", "garlic", "onion", "basil"], instructions: "Boil pasta. Saute veggies, add tomato sauce. Toss together. 15 min.", time: 15, calories: 400 },
+      { name: "Quinoa Salad", ingredients: ["quinoa", "cucumber", "tomato", "feta", "olive oil"], instructions: "Cook quinoa. Chop veggies, mix with oil and feta. Chill. 25 min.", time: 25, calories: 380 },
+      { name: "Chickpea Curry", ingredients: ["chickpeas", "spinach", "coconut milk", "curry powder"], instructions: "Simmer chickpeas in coconut milk and curry. Add spinach. Serve with rice. 30 min.", time: 30, calories: 450 },
+      { name: "Tofu Stir Fry", ingredients: ["tofu", "broccoli", "soy sauce", "ginger"], instructions: "Stir-fry tofu and broccoli, add soy and ginger. 15 min.", time: 15, calories: 320 },
+      { name: "Lentil Soup", ingredients: ["lentils", "carrot", "onion", "cumin"], instructions: "Saute onion/carrot, add lentils and spices, simmer 30 min.", time: 35, calories: 300 }
+    ];
 
-        function randomize() {
-            const userIngs = document.getElementById('ingredients').value.toLowerCase()
-                .split(',')
-                .map(s => s.trim())
-                .filter(Boolean);
-            if (userIngs.length < 1) return alert('Add some ingredients!');
+    function randomize() {
+      const userIngs = document.getElementById("ingredients").value
+        .toLowerCase()
+        .split(",")
+        .map(s => s.trim())
+        .filter(Boolean);
 
-            const matches = recipes.filter(r =>
-                r.ingredients.some(ing => userIngs.includes(ing.toLowerCase()))
-            );
-            if (matches.length === 0) {
-                document.getElementById('output').innerHTML =
-                    '<p>No matches—try broader ingredients like "rice" or "chicken".</p>';
-                return;
-            }
+      if (userIngs.length < 1) {
+        alert("Add some ingredients!");
+        return;
+      }
 
-            const recipe = matches[Math.floor(Math.random() * matches.length)];
-            const missing = recipe.ingredients.filter(
-                ing => !userIngs.includes(ing.toLowerCase())
-            );
+      const matches = recipes.filter(r =>
+        r.ingredients.some(ing => userIngs.includes(ing.toLowerCase()))
+      );
 
-            document.getElementById('output').innerHTML = `
-                <div class="recipe">
-                    <h2>${recipe.name} (${recipe.time}min, ~${recipe.calories}cal)</h2>
-                    <h3>You have:</h3>
-                    <ul class="ingredients">
-                        ${recipe.ingredients
-                            .filter(ing => userIngs.includes(ing.toLowerCase()))
-                            .map(ing => `<li>✅ ${ing}</li>`).join('')}
-                    </ul>
-                    ${
-                        missing.length
-                            ? `<h3>Need to buy:</h3>
-                               <ul class="ingredients">
-                                 ${missing.map(ing => `<li class="missing">❌ ${ing}</li>`).join('')}
-                               </ul>`
-                            : '<p>✅ All ingredients ready!</p>'
-                    }
-                    <h3>Instructions:</h3>
-                    <p>${recipe.instructions}</p>
-                    <button onclick="randomize()">New Recipe 🎲</button>
-                </div>
-            `;
-        }
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617858925531368"
-     crossorigin="anonymous"></script>
-<!-- coffee -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7617858925531368"
-     data-ad-slot="5852355491"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+      if (matches.length === 0) {
+        document.getElementById("output").innerHTML =
+          '<p>No matches. Try broader ingredients like "rice" or "chicken".</p>';
+        return;
+      }
+
+      const recipe = matches[Math.floor(Math.random() * matches.length)];
+      const missing = recipe.ingredients.filter(
+        ing => !userIngs.includes(ing.toLowerCase())
+      );
+
+      document.getElementById("output").innerHTML = `
+        <div class="recipe">
+          <h2>${recipe.name} (${recipe.time} min, ~${recipe.calories} cal)</h2>
+          <h3>You have:</h3>
+          <ul class="ingredients">
+            ${recipe.ingredients
+              .filter(ing => userIngs.includes(ing.toLowerCase()))
+              .map(ing => `<li>✅ ${ing}</li>`).join("")}
+          </ul>
+          ${
+            missing.length
+              ? `<h3>Need to buy:</h3>
+                 <ul class="ingredients">
+                   ${missing.map(ing => `<li class="missing">❌ ${ing}</li>`).join("")}
+                 </ul>`
+              : "<p>✅ All ingredients ready!</p>"
+          }
+          <h3>Instructions:</h3>
+          <p>${recipe.instructions}</p>
+          <button onclick="randomize()">New Recipe 🎲</button>
+        </div>
+      `;
+    }
+  </script>
+
+  <!-- coffee -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7617858925531368"
+       data-ad-slot="5852355491"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </body>
 </html>
