@@ -2,33 +2,51 @@
 
 A modern food blog featuring delicious recipes with Amazon affiliate links for ingredients and kitchen equipment.
 
-## Features
+## 🚀 Monetization Setup
+
+This project is integrated with the **Amazon Associates** program.
+
+### Storefront Integration
+The site features a direct link to your Amazon Influencer Storefront in the header and recipe pages.
+- **Storefront URL**: [amazon.co.uk/shop/mbm1212](https://amazon.co.uk/shop/mbm1212)
+
+### Affiliate Links
+All ingredient and equipment links are tagged with your Associate ID to earn commissions on qualifying purchases.
+- **Associate Tag**: `mbm1212-21`
+
+To update the tag globally:
+1. Open `index.html`.
+2. Update the `ASSOCIATE_TAG` constant in the `<script>` section.
+
+### Legal Disclosure
+The required Amazon affiliate disclosure is included in the footer and at the top of recipes to ensure compliance with Amazon's Operating Agreement.
+
+## ✨ Features
 - 📖 Beautiful recipe cards with ingredients, instructions, and timing
-- 🔗 Amazon affiliate links integrated for recommended products
-- 🍽️ Organized by cuisine, difficulty level, and dietary preferences
+- 🛒 **Integrated Amazon Affiliate Links** for ingredients and tools
+- 🔗 **Influencer Storefront** button for curated collections
 - 📱 Fully responsive mobile-first design
 - ⚡ Fast performance with static site generation
 - 🎨 Clean, modern UI
 
-## Tech Stack
+## 🛠️ Tech Stack
 - **Frontend**: Next.js 14 + React
 - **Styling**: Tailwind CSS
 - **Content**: Markdown-based recipe files
 - **Hosting**: Vercel/GitHub Pages
 - **Monetization**: Amazon Associates affiliate program
 
-## Project Structure
+## 📁 Project Structure
 ```
 pantryspin/
 ├── pages/           # Next.js pages
 ├── components/      # React components
-├── recipes/         # Recipe markdown files
+├── recipes/         # Recipe markdown files (Aglio e Olio sample included)
 ├── public/          # Static assets
-├── styles/          # Global styles
-└── lib/             # Utility functions
+└── index.html       # Main site entry point with affiliate logic
 ```
 
-## Getting Started
+## 🏁 Getting Started
 
 ### Prerequisites
 - Node.js 18+ installed
@@ -47,50 +65,10 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the blog.
-
-## Adding Recipes
-
-1. Create a new markdown file in `recipes/` folder
-2. Include frontmatter with metadata:
-```yaml
----
-title: "Recipe Name"
-description: "Brief description"
-cuisine: "Cuisine type"
-difficulty: "Easy/Medium/Hard"
-servings: 4
-prepTime: 15
-cookTime: 30
-img: "/images/recipe.jpg"
----
-```
-
-3. Add Amazon affiliate links for ingredients and tools
-
-## Affiliate Links
-
-All Amazon product links are affiliate links. Whenever readers make a purchase through these links, we earn a small commission at no extra cost to them.
-
-**Important**: Ensure transparent disclosure of affiliate relationships per Amazon Associates policies.
-
-## Deployment
-
-### Deploy to Vercel (Recommended)
-```bash
-npm run build
-vercel --prod
-```
-
-### Deploy to GitHub Pages
-See `gh-pages` branch for static site generation setup.
-
-## License
-MIT License - feel free to use this template for your own blog!
-
-## Contact
-For questions or recipe suggestions, open an issue or contact the maintainer.
+## 📝 Adding Recipes
+1. Create a new markdown file in `recipes/` folder.
+2. Add your Amazon affiliate links using the format: `[Product Name](https://www.amazon.co.uk/s?k=product+name&tag=mbm1212-21)`.
+3. Update the `recipes` array in `index.html` to include your new recipe metadata for the search feature.
 
 ---
-
-Made with ❤️ and a passion for cooking
+Made with ❤️ for PantrySpin
