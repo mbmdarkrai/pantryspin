@@ -16,15 +16,15 @@
         #recipe { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .disclosure { font-size: 0.8em; color: #6b7280; margin-top: 40px; padding: 15px; border-top: 1px solid #eee; text-align: center; }
         .ingredient-link { color: #10b981; text-decoration: none; border-bottom: 1px dashed #10b981; }
-        .ingredient-link:hover { color: #059669; border-bottom-style: solid; }
         .logo { text-align: center; font-size: 4em; margin-bottom: 0; }
         .tagline { text-align: center; color: #6b7280; margin-top: 0; }
+        .demo-link { display: block; text-align: center; margin-top: 10px; color: #10b981; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="header-nav">
         <div class="logo">🍳</div>
-        <a href="https://amazon.co.uk/shop/mbm1212" target="_blank">
+        <a href="https://www.amazon.co.uk/shop/mbm03" target="_blank">
             <button class="btn-amazon">🛒 Shop My Amazon Storefront</button>
         </a>
     </div>
@@ -38,12 +38,14 @@
 
     <div id="recipe"></div>
 
+    <a href="affiliate-demo.html" class="demo-link">View Amazon Affiliate Demo Page</a>
+
     <footer class="disclosure">
         <p>As an Amazon Associate, I earn from qualifying purchases. This helps support PantrySpin at no extra cost to you!</p>
     </footer>
 
     <script>
-        const ASSOCIATE_TAG = 'mbm1212-21';
+        const ASSOCIATE_TAG = 'mbm03-21';
         const recipes = [
             {
                 name: "Pasta Aglio e Olio",
@@ -55,41 +57,13 @@
                     "Toss pasta with the garlic oil and a splash of pasta water.",
                     "Garnish with fresh parsley."
                 ]
-            },
-            {
-                name: "Classic Spaghetti Carbonara",
-                servings: 4,
-                ingredients: ["spaghetti", "eggs", "bacon", "parmesan", "black pepper"],
-                instructions: [
-                    "Cook spaghetti until al dente.",
-                    "Fry bacon until crispy.",
-                    "Whisk eggs and parmesan in a small bowl.",
-                    "Combine hot pasta with bacon, then remove from heat and stir in egg mixture quickly.",
-                    "Season with plenty of black pepper."
-                ]
             }
         ];
 
         function getRecipe() {
             const input = document.getElementById('ingredientInput').value.toLowerCase();
             if (!input.trim()) { alert('Please enter some ingredients!'); return; }
-            const userIngredients = input.split(',').map(i => i.trim());
-            
-            let bestMatch = recipes[0];
-            let maxMatches = 0;
-            for (const recipe of recipes) {
-                let matches = 0;
-                for (const ingredient of userIngredients) {
-                    if (recipe.ingredients.some(ri => ri.includes(ingredient) || ingredient.includes(ri))) {
-                        matches++;
-                    }
-                }
-                if (matches > maxMatches) {
-                    maxMatches = matches;
-                    bestMatch = recipe;
-                }
-            }
-            displayRecipe(bestMatch);
+            displayRecipe(recipes[0]);
         }
 
         function displayRecipe(recipe) {
