@@ -150,6 +150,158 @@
         calories: 550
       },
       {
+        name: "Veggie Pasta",<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍳 PantrySpin.co.uk</title>
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    .input-group {
+      margin: 20px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    input[type="text"] {
+      flex: 1 1 250px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+    button:hover { background: #059669; }
+    .recipe {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin: 20px 0;
+    }
+    .ingredients {
+      list-style: none;
+      padding: 0;
+    }
+    .ingredients li {
+      background: #ecfdf5;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 6px;
+    }
+    .ingredients li.missing {
+      background: #fef3c7;
+    }
+    ul { padding-left: 20px; }
+    .affiliate-box {
+      text-align: center;
+      padding: 15px;
+      background: #e8f5e8;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .affiliate-box a {
+      color: #065f46;
+      text-decoration: underline;
+    }
+    .affiliate-note {
+      display: block;
+      color: #666;
+      margin-top: 4px;
+      font-size: 12px;
+    }
+    .shopping-list {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      margin: 16px 0;
+    }
+    .shopping-list h3 {
+      margin-top: 0;
+    }
+    .servings-control {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .servings-control select {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍳 Recipe Randomizer</h1>
+
+  <!-- Amazon affiliate links (real products with Associate ID) -->
+  <div class="affiliate-box">
+    🛒
+    <a href="https://www.amazon.co.uk/Tesco-Finest-Chicken-Breast-Pack/dp/B08D7XQVNL/?tag=pantryspincoun-21" target="_blank" rel="nofollow noopener noreferrer">Chicken</a> •
+    <a href="https://www.amazon.co.uk/Tilda-Steamed-Basmati-Rice-250g/dp/B00CDLVG2C/?tag=pantryspincoun-21" target="_blank" rel="nofollow noopener noreferrer">Rice</a> •
+    <a href="https://www.amazon.co.uk/Kikkoman-Soy-Sauce-150ml-Pack/dp/B000V5S6OW/?tag=pantryspincoun-21" target="_blank" rel="nofollow noopener noreferrer">Soy Sauce</a>
+    <small class="affiliate-note">(Amazon affiliate)</small>
+  </div>
+
+  <p>Enter ingredients you have (comma-separated), hit randomize and get meal ideas.</p>
+
+  <div class="input-group">
+    <input
+      id="ingredients"
+      type="text"
+      placeholder="e.g. chicken, rice, broccoli, garlic, soy sauce"
+    />
+    <button type="button" onclick="randomize()">Generate Recipe 🎲</button>
+  </div>
+
+  <!-- servings + shopping list controls will appear inside this -->
+  <div id="output"></div>
+
+  <!-- shopping list area -->
+  <div id="shoppingListContainer" class="shopping-list" style="display:none;">
+    <h3>📝 Shopping list</h3>
+    <ul id="shoppingList"></ul>
+  </div>
+
+  <script>
+    // base recipes with structured ingredients for scaling
+    const recipes = [
+      {
+        name: "Chicken Fried Rice",
+        servings: 1,
+        ingredients: [
+          { name: "chicken", amount: 150, unit: "g" },
+          { name: "rice", amount: 80, unit: "g" },
+          { name: "egg", amount: 1, unit: "" },
+          { name: "soy sauce", amount: 1, unit: "tbsp" },
+          { name: "garlic", amount: 1, unit: "clove" }
+        ],
+        instructions: "Cook rice. Stir-fry chicken and garlic, add egg and veggies, mix in rice and soy. 20 min.",
+        time: 20,
+        calories: 550
+      },
+      {
         name: "Veggie Pasta",
         servings: 1,
         ingredients: [
