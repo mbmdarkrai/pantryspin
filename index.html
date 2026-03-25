@@ -8,8 +8,8 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #fef3c7, #fee2e2, #e0f2fe);
-      color: #111827;
+      background: #0f172a;
+      color: #e2e8f0;
     }
 
     .header-nav {
@@ -18,21 +18,20 @@
       align-items: center;
       gap: 16px;
       padding: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e5e7eb;
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
     }
 
     h1 {
       text-align: center;
       font-size: 2.5rem;
       margin: 10px 0 4px;
-      color: #16a34a;
+      color: #4ade80;
     }
 
     .tagline {
       text-align: center;
-      color: #6b7280;
+      color: #cbd5e1;
       margin-top: 0;
     }
 
@@ -47,32 +46,33 @@
     input[type="text"] {
       flex: 1 1 250px;
       padding: 12px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid #334155;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.95);
+      background: #1e293b;
+      color: #e2e8f0;
     }
 
     button {
       background: #22c55e;
-      color: white;
+      color: #0f172a;
       border: none;
       padding: 12px 24px;
       border-radius: 999px;
       cursor: pointer;
       font-weight: 600;
-      box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
+      box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.3);
       transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s;
     }
 
     button:hover {
       background: #16a34a;
       transform: translateY(-1px);
-      box-shadow: 0 15px 25px -5px rgba(22, 163, 74, 0.35);
+      box-shadow: 0 15px 25px -5px rgba(34, 197, 94, 0.4);
     }
 
     .btn-amazon {
       background: #f97316;
-      color: #111827;
+      color: #0f172a;
     }
 
     .btn-amazon:hover {
@@ -82,30 +82,31 @@
     #recipe {
       max-width: 720px;
       margin: 0 auto 32px;
-      background: rgba(255, 255, 255, 0.95);
+      background: #1e293b;
       padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid #334155;
     }
 
     .disclosure {
       font-size: 0.8em;
-      color: #6b7280;
+      color: #94a3b8;
       margin-top: 40px;
       padding: 15px;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid #334155;
       text-align: center;
-      background: rgba(255, 255, 255, 0.85);
+      background: #1e293b;
     }
 
     .ingredient-link {
-      color: #16a34a;
+      color: #4ade80;
       text-decoration: none;
-      border-bottom: 1px dashed #16a34a;
+      border-bottom: 1px dashed #4ade80;
     }
 
     .ingredient-link:hover {
-      color: #15803d;
+      color: #86efac;
       border-bottom-style: solid;
     }
 
@@ -119,7 +120,7 @@
       display: block;
       text-align: center;
       margin-top: 10px;
-      color: #22c55e;
+      color: #4ade80;
       font-weight: bold;
     }
   </style>
@@ -183,12 +184,12 @@
         <ul>
           ${recipe.ingredients.map(ing => {
             const amazonUrl = "https://www.amazon.co.uk/s?k=" + encodeURIComponent(ing) + "&tag=" + ASSOCIATE_TAG;
-            return "<li><a href=\\"" + amazonUrl + "\\" class=\\"ingredient-link\\" target=\\"_blank\\">" + ing + "</a></li>";
+            return "><a href=\\"" + amazonUrl + "\\" class=\\"ingredient-link\\" target=\\"_blank\\">" + ing + "</a></li>";
           }).join('')}
         </ul>
         <h3>Instructions:</h3>
         <ol>
-          ${recipe.instructions.map(step => "<li>" + step + "</li>").join('')}
+          ${recipe.instructions.map(step => ">" + step + "</li>").join('')}
         </ol>
       `;
     }
@@ -200,3 +201,4 @@
   </script>
 </body>
 </html>
+
