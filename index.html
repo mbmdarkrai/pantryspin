@@ -184,12 +184,12 @@
         <ul>
           ${recipe.ingredients.map(ing => {
             const amazonUrl = "https://www.amazon.co.uk/s?k=" + encodeURIComponent(ing) + "&tag=" + ASSOCIATE_TAG;
-            return "><a href=\\"" + amazonUrl + "\\" class=\\"ingredient-link\\" target=\\"_blank\\">" + ing + "</a></li>";
+            return "<li><a href=\"" + amazonUrl + "\" class=\"ingredient-link\" target=\"_blank\">" + ing + "</a></li>";
           }).join('')}
         </ul>
         <h3>Instructions:</h3>
         <ol>
-          ${recipe.instructions.map(step => ">" + step + "</li>").join('')}
+          ${recipe.instructions.map(step => "<li>" + step + "</li>").join('')}
         </ol>
       `;
     }
@@ -201,4 +201,3 @@
   </script>
 </body>
 </html>
-
