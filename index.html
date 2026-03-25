@@ -1,91 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🍳 PantrySpin.co.uk</title>
-    <style>
-        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
-        .header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .input-group { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }
-        input[type="text"] { flex: 1 1 250px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
-        button { background: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; }
-        button:hover { background: #059669; }
-        .btn-amazon { background: #ff9900; color: #111; }
-        .btn-amazon:hover { background: #e68a00; }
-        #recipe { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .disclosure { font-size: 0.8em; color: #6b7280; margin-top: 40px; padding: 15px; border-top: 1px solid #eee; text-align: center; }
-        .ingredient-link { color: #10b981; text-decoration: none; border-bottom: 1px dashed #10b981; }
-        .logo { text-align: center; font-size: 4em; margin-bottom: 0; }
-        .tagline { text-align: center; color: #6b7280; margin-top: 0; }
-        .demo-link { display: block; text-align: center; margin-top: 10px; color: #10b981; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍳 PantrySpin.co.uk</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #fef3c7, #fee2e2, #e0f2fe);
+      color: #111827;
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 10px 0 4px;
+      color: #16a34a;
+    }
+
+    .tagline {
+      text-align: center;
+      color: #6b7280;
+      margin-top: 0;
+    }
+
+    .input-group {
+      max-width: 640px;
+      margin: 24px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    input[type="text"] {
+      flex: 1 1 250px;
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    button {
+      background: #22c55e;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s;
+    }
+
+    button:hover {
+      background: #16a34a;
+      transform: translateY(-1px);
+      box-shadow: 0 15px 25px -5px rgba(22, 163, 74, 0.35);
+    }
+
+    .btn-amazon {
+      background: #f97316;
+      color: #111827;
+    }
+
+    .btn-amazon:hover {
+      background: #ea580c;
+    }
+
+    #recipe {
+      max-width: 720px;
+      margin: 0 auto 32px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    .disclosure {
+      font-size: 0.8em;
+      color: #6b7280;
+      margin-top: 40px;
+      padding: 15px;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .ingredient-link {
+      color: #16a34a;
+      text-decoration: none;
+      border-bottom: 1px dashed #16a34a;
+    }
+
+    .ingredient-link:hover {
+      color: #15803d;
+      border-bottom-style: solid;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 0;
+    }
+
+    .demo-link {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #22c55e;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="header-nav">
-        <div class="logo">🍳</div>
-        <a href="https://www.amazon.co.uk/shop/mbm03" target="_blank">
-            <button class="btn-amazon">🛒 Shop My Amazon Storefront</button>
-        </a>
-    </div>
-    <h1>PantrySpin</h1>
-    <p class="tagline">Spin your pantry ingredients into delicious meals!</p>
-    
-    <div class="input-group">
-        <input type="text" id="ingredientInput" placeholder="Enter ingredients (e.g., garlic, olive oil, pasta)" />
-        <button onclick="getRecipe()">✨ Get Recipe</button>
-    </div>
+  <div class="header-nav">
+    <div class="logo">🍳</div>
+    <a href="https://www.amazon.co.uk/shop/mbm03" target="_blank">
+      <button class="btn-amazon">🛒 Shop My Amazon Storefront</button>
+    </a>
+  </div>
 
-    <div id="recipe"></div>
+  <h1>PantrySpin</h1>
+  <p class="tagline">Spin your pantry ingredients into delicious meals!</p>
 
-    <a href="affiliate-demo.html" class="demo-link">View Amazon Affiliate Demo Page</a>
+  <div class="input-group">
+    <input
+      type="text"
+      id="ingredientInput"
+      placeholder="Enter ingredients (e.g., garlic, olive oil, pasta)"
+    />
+    <button onclick="getRecipe()">✨ Get Recipe</button>
+  </div>
 
-    <footer class="disclosure">
-        <p>As an Amazon Associate, I earn from qualifying purchases. This helps support PantrySpin at no extra cost to you!</p>
-    </footer>
+  <div id="recipe"></div>
 
-    <script>
-        const ASSOCIATE_TAG = 'mbm03-21';
-        const recipes = [
-            {
-                name: "Pasta Aglio e Olio",
-                servings: 4,
-                ingredients: ["spaghetti", "garlic", "olive oil", "red pepper flakes", "parsley"],
-                instructions: [
-                    "Boil pasta in salted water until al dente.",
-                    "Sauté thinly sliced garlic and red pepper flakes in olive oil over low heat until fragrant.",
-                    "Toss pasta with the garlic oil and a splash of pasta water.",
-                    "Garnish with fresh parsley."
-                ]
-            }
-        ];
+  <a href="affiliate-demo.html" class="demo-link">View Amazon Affiliate Demo Page</a>
 
-        function getRecipe() {
-            const input = document.getElementById('ingredientInput').value.toLowerCase();
-            if (!input.trim()) { alert('Please enter some ingredients!'); return; }
-            displayRecipe(recipes[0]);
-        }
+  <footer class="disclosure">
+    <p>As an Amazon Associate, I earn from qualifying purchases. This helps support PantrySpin at no extra cost to you!</p>
+  </footer>
 
-        function displayRecipe(recipe) {
-            const recipeDiv = document.getElementById('recipe');
-            recipeDiv.innerHTML = `
-                <h2>${recipe.name}</h2>
-                <p><strong>Servings:</strong> ${recipe.servings}</p>
-                <h3>Ingredients:</h3>
-                <ul>
-                    ${recipe.ingredients.map(ing => {
-                        const amazonUrl = "https://www.amazon.co.uk/s?k=" + encodeURIComponent(ing) + "&tag=" + ASSOCIATE_TAG;
-                        return "<li><a href=\"" + amazonUrl + "\" class=\"ingredient-link\" target=\"_blank\">" + ing + "</a></li>";
-                    }).join('')}
-                </ul>
-                <h3>Instructions:</h3>
-                <ol>
-                    ${recipe.instructions.map(step => "<li>" + step + "</li>").join('')}
-                </ol>
-            `;
-        }
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617858925531368"
-     crossorigin="anonymous"></script>
+  <script>
+    const ASSOCIATE_TAG = 'mbm03-21';
+    const recipes = [
+      {
+        name: "Pasta Aglio e Olio",
+        servings: 4,
+        ingredients: ["spaghetti", "garlic", "olive oil", "red pepper flakes", "parsley"],
+        instructions: [
+          "Boil pasta in salted water until al dente.",
+          "Sauté thinly sliced garlic and red pepper flakes in olive oil over low heat until fragrant.",
+          "Toss pasta with the garlic oil and a splash of pasta water.",
+          "Garnish with fresh parsley."
+        ]
+      }
+    ];
+
+    function getRecipe() {
+      const input = document.getElementById('ingredientInput').value.toLowerCase();
+      if (!input.trim()) { alert('Please enter some ingredients!'); return; }
+      displayRecipe(recipes[0]);
+    }
+
+    function displayRecipe(recipe) {
+      const recipeDiv = document.getElementById('recipe');
+      recipeDiv.innerHTML = `
+        <h2>${recipe.name}</h2>
+        <p><strong>Servings:</strong> ${recipe.servings}</p>
+        <h3>Ingredients:</h3>
+        <ul>
+          ${recipe.ingredients.map(ing => {
+            const amazonUrl = "https://www.amazon.co.uk/s?k=" + encodeURIComponent(ing) + "&tag=" + ASSOCIATE_TAG;
+            return "<li><a href=\\"" + amazonUrl + "\\" class=\\"ingredient-link\\" target=\\"_blank\\">" + ing + "</a></li>";
+          }).join('')}
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+          ${recipe.instructions.map(step => "<li>" + step + "</li>").join('')}
+        </ol>
+      `;
+    }
+  </script>
+
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617858925531368"
+    crossorigin="anonymous">
+  </script>
 </body>
 </html>
