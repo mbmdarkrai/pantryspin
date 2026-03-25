@@ -4,158 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🍳 PantrySpin.co.uk</title>
-
     <style>
-        body {
-            font-family: system-ui, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f8f9fa;
-        }
-
-        .input-group {
-            margin: 20px 0;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        input[type="text"] {
-            flex: 1 1 250px;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background: #10b981;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        button:hover {
-            background: #059669;
-        }
-
-        #recipe {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            color: #1f2937;
-            text-align: center;
-        }
-
-        h2 {
-            color: #10b981;
-            border-bottom: 2px solid #10b981;
-            padding-bottom: 8px;
-        }
-
-        ul {
-            line-height: 1.8;
-        }
-
-        .logo {
-            text-align: center;
-            font-size: 4em;
-            margin-bottom: 0;
-        }
-
-        .tagline {
-            text-align: center;
-            color: #6b7280;
-            margin-top: 0;
-        }
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
+        .header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .input-group { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+        input[type="text"] { flex: 1 1 250px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        button { background: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        button:hover { background: #059669; }
+        .btn-amazon { background: #ff9900; color: #111; }
+        .btn-amazon:hover { background: #e68a00; }
+        #recipe { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .disclosure { font-size: 0.8em; color: #6b7280; margin-top: 40px; padding: 15px; border-top: 1px solid #eee; text-align: center; }
+        .ingredient-link { color: #10b981; text-decoration: none; border-bottom: 1px dashed #10b981; }
+        .ingredient-link:hover { color: #059669; border-bottom-style: solid; }
+        .logo { text-align: center; font-size: 4em; margin-bottom: 0; }
+        .tagline { text-align: center; color: #6b7280; margin-top: 0; }
     </style>
 </head>
 <body>
-    <div class="logo">🍳</div>
+    <div class="header-nav">
+        <div class="logo">🍳</div>
+        <a href="https://amazon.co.uk/shop/mbm1212" target="_blank">
+            <button class="btn-amazon">🛒 Shop My Amazon Storefront</button>
+        </a>
+    </div>
     <h1>PantrySpin</h1>
     <p class="tagline">Spin your pantry ingredients into delicious meals!</p>
-
+    
     <div class="input-group">
-        <input type="text" id="ingredientInput" placeholder="Enter ingredients (e.g., chicken, rice, tomatoes)" />
+        <input type="text" id="ingredientInput" placeholder="Enter ingredients (e.g., garlic, olive oil, pasta)" />
         <button onclick="getRecipe()">✨ Get Recipe</button>
     </div>
 
     <div id="recipe"></div>
 
+    <footer class="disclosure">
+        <p>As an Amazon Associate, I earn from qualifying purchases. This helps support PantrySpin at no extra cost to you!</p>
+    </footer>
+
     <script>
+        const ASSOCIATE_TAG = 'mbm1212-21';
         const recipes = [
+            {
+                name: "Pasta Aglio e Olio",
+                servings: 4,
+                ingredients: ["spaghetti", "garlic", "olive oil", "red pepper flakes", "parsley"],
+                instructions: [
+                    "Boil pasta in salted water until al dente.",
+                    "Sauté thinly sliced garlic and red pepper flakes in olive oil over low heat until fragrant.",
+                    "Toss pasta with the garlic oil and a splash of pasta water.",
+                    "Garnish with fresh parsley."
+                ]
+            },
             {
                 name: "Classic Spaghetti Carbonara",
                 servings: 4,
                 ingredients: ["spaghetti", "eggs", "bacon", "parmesan", "black pepper"],
                 instructions: [
-                    "Cook spaghetti according to package directions",
-                    "Fry bacon until crispy",
-                    "Mix eggs and parmesan in a bowl",
-                    "Toss hot pasta with bacon and egg mixture",
-                    "Season generously with black pepper"
-                ]
-            },
-            {
-                name: "Quick Chicken Stir-Fry",
-                servings: 3,
-                ingredients: ["chicken breast", "soy sauce", "vegetables", "garlic", "ginger", "rice"],
-                instructions: [
-                    "Cut chicken into bite-sized pieces",
-                    "Heat oil in a wok or large pan",
-                    "Cook chicken until golden",
-                    "Add vegetables and stir-fry for 5 minutes",
-                    "Add soy sauce, garlic, and ginger",
-                    "Serve over rice"
-                ]
-            },
-            {
-                name: "Tomato Basil Pasta",
-                servings: 2,
-                ingredients: ["pasta", "tomatoes", "basil", "garlic", "olive oil", "mozzarella"],
-                instructions: [
-                    "Boil pasta until al dente",
-                    "Sauté garlic in olive oil",
-                    "Add chopped tomatoes and cook for 10 minutes",
-                    "Toss with pasta and fresh basil",
-                    "Top with mozzarella"
-                ]
-            },
-            {
-                name: "Veggie Pasta",
-                servings: 4,
-                ingredients: ["pasta", "bell peppers", "zucchini", "onion", "garlic", "olive oil"],
-                instructions: [
-                    "Cook pasta according to package directions",
-                    "Sauté vegetables in olive oil",
-                    "Add garlic and cook for 2 minutes",
-                    "Toss with cooked pasta",
-                    "Season with salt and pepper"
+                    "Cook spaghetti until al dente.",
+                    "Fry bacon until crispy.",
+                    "Whisk eggs and parmesan in a small bowl.",
+                    "Combine hot pasta with bacon, then remove from heat and stir in egg mixture quickly.",
+                    "Season with plenty of black pepper."
                 ]
             }
         ];
 
         function getRecipe() {
             const input = document.getElementById('ingredientInput').value.toLowerCase();
-            
-            if (!input.trim()) {
-                alert('Please enter some ingredients!');
-                return;
-            }
-
+            if (!input.trim()) { alert('Please enter some ingredients!'); return; }
             const userIngredients = input.split(',').map(i => i.trim());
             
             let bestMatch = recipes[0];
             let maxMatches = 0;
-
             for (const recipe of recipes) {
                 let matches = 0;
                 for (const ingredient of userIngredients) {
@@ -168,11 +89,6 @@
                     bestMatch = recipe;
                 }
             }
-
-            if (maxMatches === 0) {
-                bestMatch = recipes[Math.floor(Math.random() * recipes.length)];
-            }
-
             displayRecipe(bestMatch);
         }
 
@@ -181,51 +97,18 @@
             recipeDiv.innerHTML = `
                 <h2>${recipe.name}</h2>
                 <p><strong>Servings:</strong> ${recipe.servings}</p>
-                
                 <h3>Ingredients:</h3>
                 <ul>
-                    ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+                    ${recipe.ingredients.map(ing => {
+                        const amazonUrl = "https://www.amazon.co.uk/s?k=" + encodeURIComponent(ing) + "&tag=" + ASSOCIATE_TAG;
+                        return "<li><a href=\"" + amazonUrl + "\" class=\"ingredient-link\" target=\"_blank\">" + ing + "</a></li>";
+                    }).join('')}
                 </ul>
-                
                 <h3>Instructions:</h3>
                 <ol>
-                    ${recipe.instructions.map(step => `<li>${step}</li>`).join('')}
+                    ${recipe.instructions.map(step => "<li>" + step + "</li>").join('')}
                 </ol>
             `;
-        }
-
-        function formatAmount(ing) {
-            if (!ing.amount) return '';
-            return ing.amount + (ing.unit || '');
-        }
-
-        function updateServings(factor) {
-            if (!currentRecipe || !baseRecipe.servings) return;
-            
-            const targetServings = baseRecipe.servings * factor;
-            currentRecipe.servings = targetServings;
-            currentRecipe.ingredients = baseRecipe.ingredients.map(ing => ({
-                ...ing,
-                amount: formatAmount(ing.amount * factor)
-            }));
-        }
-
-        function renderShoppingList() {
-            const shoppingListEl = document.getElementById("shoppingList");
-            shoppingListEl.innerHTML = "";
-            
-            currentRecipe.ingredients.forEach(ing => {
-                const li = document.createElement("li");
-                const checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                
-                const label = document.createElement("label");
-                label.textContent = ` ${formatAmount(ing.amount)} ${ing.unit} ${ing.name}`;
-                
-                li.appendChild(checkbox);
-                li.appendChild(label);
-                shoppingListEl.appendChild(li);
-            });
         }
     </script>
 </body>
