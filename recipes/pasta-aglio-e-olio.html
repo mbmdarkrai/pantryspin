@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasta Aglio e Olio Recipe - PantrySpin</title>
+    <meta name="description" content="Classic Italian Pasta Aglio e Olio recipe with garlic, olive oil, and red pepper flakes. Ready in 15 minutes with just 5 pantry ingredients.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: #1e293b;
+            border-bottom: 1px solid #334155;
+        }
+        .logo { font-size: 2.5rem; text-decoration: none; }
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover {
+            background: #334155;
+            color: #4ade80;
+        }
+        .btn-amazon {
+            background: #f97316;
+            color: #0f172a;
+            padding: 10px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-amazon:hover {
+            background: #ea580c;
+            transform: translateY(-1px);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #4ade80;
+            margin-bottom: 12px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            color: #4ade80;
+            margin: 32px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #334155;
+        }
+        h3 {
+            color: #e2e8f0;
+            margin: 20px 0 8px;
+            font-size: 1.2rem;
+        }
+        p {
+            margin-bottom: 16px;
+            color: #cbd5e1;
+        }
+        .content-card {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+            border: 1px solid #334155;
+        }
+        .recipe-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin: 20px 0;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5e1;
+        }
+        .meta-icon { font-size: 1.3rem; }
+        .ingredient-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+        .ingredient-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #334155;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ingredient-list li:last-child {
+            border-bottom: none;
+        }
+        .check-icon {
+            color: #4ade80;
+        }
+        .step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: #22c55e;
+            color: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .step-content p {
+            margin: 0;
+        }
+        .tip-box {
+            background: #166534;
+            border-left: 4px solid #22c55e;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        .tip-box p {
+            margin: 0;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+        .back-link {
+            display: inline-block;
+            color: #4ade80;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .disclosure {
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            border-top: 1px solid #334155;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-nav">
+        <a href="/" class="logo">🍳</a>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog.html">Blog</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+        </nav>
+        <a href="https://www.amazon.co.uk/shop/pantryspin" class="btn-amazon" target="_blank" rel="noopener">🛒 Shop My Amazon Storefront</a>
+    </div>
+
+    <div class="container">
+        <a href="/" class="back-link">&larr; Back to PantrySpin</a>
+        
+        <h1>Pasta Aglio e Olio</h1>
+        <p style="color: #94a3b8; font-size: 1.1rem;">A classic Italian dish made with just 5 pantry staples — garlic, olive oil, pasta, red pepper flakes, and parsley. Simple, quick, and incredibly delicious.</p>
+
+        <div class="recipe-meta">
+            <div class="meta-item"><span class="meta-icon">⏱️</span><span>15 minutes</span></div>
+            <div class="meta-item"><span class="meta-icon">👥</span><span>Serves 2</span></div>
+            <div class="meta-item"><span class="meta-icon">🍝</span><span>Main Course</span></div>
+            <div class="meta-item"><span class="meta-icon">🇮🇹</span><span>Italian</span></div>
+        </div>
+
+        <div class="content-card">
+            <h2>Why You'll Love This Recipe</h2>
+            <p>Pasta Aglio e Olio (garlic and oil pasta) is one of the most beloved quick pasta dishes in Italian cuisine. Originating from Naples, this dish has been a staple of Italian home cooking for centuries. What makes it special is its simplicity — no fancy ingredients, no complicated techniques, just a few pantry staples transformed into something truly magical.</p>
+            <p>This recipe is perfect for those late-night cravings, quick weeknight dinners, or whenever you find yourself with an almost-empty fridge. The key to a great aglio e olio lies in gently infusing the olive oil with garlic and red pepper flakes, then tossing it with perfectly cooked pasta and a splash of starchy pasta water to create a silky, emulsified sauce.</p>
+        </div>
+
+        <h2>Ingredients</h2>
+        <div class="content-card">
+            <ul class="ingredient-list">
+                <li><span class="check-icon">✓</span> 200g (7 oz) spaghetti or linguine</li>
+                <li><span class="check-icon">✓</span> 6-8 cloves garlic, thinly sliced</li>
+                <li><span class="check-icon">✓</span> 60ml (1/4 cup) extra virgin olive oil</li>
+                <li><span class="check-icon">✓</span> 1/2 tsp red pepper flakes (adjust to taste)</li>
+                <li><span class="check-icon">✓</span> Salt, to taste</li>
+                <li><span class="check-icon">✓</span> Fresh parsley, chopped (for garnish)</li>
+                <li><span class="check-icon">✓</span> Grated Parmesan cheese (optional)</li>
+            </ul>
+            <div class="tip-box">
+                <p>💡 <strong>Ingredient tips:</strong> Use good quality extra virgin olive oil — it's the star of this dish. Fresh garlic is essential; garlic powder won't give the same results. Reserve some pasta water before draining!</p>
+            </div>
+        </div>
+
+        <h2>Instructions</h2>
+        <div class="content-card">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <p><strong>Cook the pasta.</strong> Bring a large pot of salted water to a boil. Add the spaghetti or linguine and cook according to package instructions until al dente (firm to the bite). Before draining, reserve about 1 cup of the starchy pasta water — this is crucial for the sauce!</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <p><strong>Prepare the garlic.</strong> While the pasta cooks, heat the olive oil in a large skillet or pan over medium-low heat. Add the thinly sliced garlic and red pepper flakes. Cook gently, stirring frequently, until the garlic turns golden and fragrant — about 2-3 minutes. Do not let it brown too much or it will become bitter.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <p><strong>Combine pasta and oil.</strong> Drain the pasta and add it directly to the skillet with the garlic oil. Toss to coat the pasta evenly.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <p><strong>Create the sauce.</strong> Add a splash of the reserved pasta water (start with 2-3 tablespoons) and toss vigorously. The starchy water will emulsify with the oil to create a glossy sauce that clings to the pasta. Add more pasta water if needed until you reach your desired consistency.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <p><strong>Season and serve.</strong> Taste and season with salt if needed. Remove from heat, stir in the chopped parsley, and serve immediately. Top with grated Parmesan cheese if desired.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <p>🔥 <strong>Pro tip:</strong> The secret to restaurant-quality aglio e olio is the pasta water. It contains starch that helps the oil and water emulsify into a creamy sauce without any cream or butter.</p>
+        </div>
+
+        <h2>Variations & Additions</h2>
+        <div class="content-card">
+            <p>While the classic aglio e olio is perfect on its own, feel free to customize it with these additions:</p>
+            <ul class="ingredient-list">
+                <li><span class="check-icon">✓</span> <strong>Anchovies:</strong> Add 4-6 anchovy fillets to the oil with the garlic for a deeper umami flavor.</li>
+                <li><span class="check-icon">✓</span> <strong>Prawns:</strong> Pan-sear some prawns separately and toss them in at the end.</li>
+                <li><span class="check-icon">✓</span> <strong>Cherry tomatoes:</strong> Halve and quickly blister them in the pan before adding the garlic.</li>
+                <li><span class="check-icon">✓</span> <strong>Lemon:</strong> Finish with a squeeze of fresh lemon juice and lemon zest for brightness.</li>
+                <li><span class="check-icon">✓</span> <strong>Breadcrumbs:</strong> Toast some breadcrumbs in the oil before adding the garlic for a crunchy topping.</li>
+            </ul>
+        </div>
+
+        <h2>Nutritional Information</h2>
+        <div class="content-card">
+            <p>Per serving (approximately):</p>
+            <ul class="ingredient-list">
+                <li><span class="check-icon">✓</span> Calories: ~450 kcal</li>
+                <li><span class="check-icon">✓</span> Carbohydrates: 55g</li>
+                <li><span class="check-icon">✓</span> Protein: 10g</li>
+                <li><span class="check-icon">✓</span> Fat: 20g</li>
+                <li><span class="check-icon">✓</span> Fiber: 3g</li>
+            </ul>
+            <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 12px;">Note: Nutritional values are approximate and may vary based on specific ingredients used.</p>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="content-card">
+            <h3>Can I use garlic powder instead of fresh garlic?</h3>
+            <p>While you can, fresh garlic is highly recommended. Garlic powder won't infuse the oil the same way and lacks the aromatic depth that makes this dish special.</p>
+
+            <h3>Why is my pasta aglio e olio not saucy?</h3>
+            <p>The sauce comes from emulsifying the pasta water with the olive oil. Make sure to use enough starchy pasta water and toss vigorously. The sauce should be glossy and coat every strand.</p>
+
+            <h3>Can I make this dish ahead of time?</h3>
+            <p>Aglio e olio is best served immediately. However, you can prep the garlic and measure out ingredients in advance. Cook the pasta and make the sauce just before serving for the best results.</p>
+
+            <h3>Is this recipe vegan?</h3>
+            <p>Yes! The classic aglio e olio is naturally vegan. Just skip the optional Parmesan cheese topping, or use a vegan alternative.</p>
+        </div>
+    </div>
+
+    <footer class="disclosure">
+        <p>As an Amazon Associate, PantrySpin earns from qualifying purchases. This helps support our platform at no extra cost to you.</p>
+        <p>&copy; 2025 PantrySpin. All rights reserved. | <a href="/privacy-policy.html" style="color: #94a3b8;">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
