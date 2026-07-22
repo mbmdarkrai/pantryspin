@@ -1,253 +1,562 @@
-<!DOCTYPE html>
++<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🍳 PantrySpin.co.uk</title>
-      <!-- Open Graph / Rich Pins -->
-    <meta property="og:title" content="PantrySpin - Spin Your Pantry Into Delicious Meals" />
-    <meta property="og:description" content="Enter your ingredients and get delicious recipes instantly. Shop ingredients on Amazon with our affiliate links." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://pantryspin.co.uk/" />
-    <meta property="og:site_name" content="PantrySpin" />
-    <meta property="og:image" content="https://pantryspin.co.uk/og-image.jpg" />
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PantrySpin - Spin Your Pantry Into Delicious Meals" />
-    <meta name="twitter:description" content="Enter your ingredients and get delicious recipes instantly." />
-    <!-- Pinterest Rich Pins Verification -->
-    <meta name="p:domain_verify" content="e473991ad108b38c2e01db485ad3cbdf"/>
-    <!-- Pinterest Tag -->
-    <script>
-    !function(e){if(!window.pintrk){window.pintrk = function () {
-    window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
-      n=window.pintrk;n.queue=[],n.version="3.0";
-      var
-      i=document.createElement("script");i.async=!0,i.src=e;
-      var r=document.getElementsByTagName("script")[0];
-      r.parentNode.insertBefore(i,r)}}("https://s.pinimg.com/ct/core.js");
-    pintrk('load', '2614289112295', {});
-    pintrk('page');
-    </script>
-    <noscript>
-    <img height="1" width="1" style="display:none;" src="https://trk.pinterest.com/v3/?ad=2614289112295&noscript=1" />
-    </noscript>
-    <!-- Schema.org Recipe Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Recipe",
-      "name": "Pasta Aglio e Olio",
-      "description": "A classic Italian pasta dish with garlic, olive oil, and red pepper flakes.",
-      "prepTime": "PT10M",
-      "cookTime": "PT15M",
-      "totalTime": "PT25M",
-      "recipeYield": "4 servings",
-      "recipeIngredient": ["spaghetti", "garlic", "olive oil", "red pepper flakes", "parsley"],
-      "recipeInstructions": [
-        { "@type": "HowToStep", "text": "Boil pasta in salted water until al dente." },
-        { "@type": "HowToStep", "text": "Sauté thinly sliced garlic and red pepper flakes in olive oil over low heat until fragrant." },
-        { "@type": "HowToStep", "text": "Toss pasta with the garlic oil and a splash of pasta water." },
-        { "@type": "HowToStep", "text": "Garnish with fresh parsley." }
-      ],
-      "author": { "@type": "Person", "name": "PantrySpin" },
-      "url": "https://pantryspin.co.uk/"
-    }
-    </script>
+  <meta name="description" content="Turn the ingredients you already have into simple, delicious meals." />
+  <meta property="og:title" content="PantrySpin — Turn what you have into dinner" />
+  <meta property="og:description" content="Enter your pantry ingredients and discover easy recipe ideas in seconds." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pantryspin.co.uk/" />
+  <meta property="og:image" content="https://pantryspin.co.uk/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="p:domain_verify" content="e473991ad108b38c2e01db485ad3cbdf" />
+  <title>PantrySpin — What can I cook?</title>
   <style>
+    :root {
+      --ink: #17352b;
+      --muted: #60736b;
+      --cream: #fffaf0;
+      --card: #ffffff;
+      --green: #16794f;
+      --green-dark: #0f5e3d;
+      --lime: #dff3b6;
+      --orange: #f47b3a;
+      --line: #dfe8e2;
+      --shadow: 0 18px 50px rgba(31, 64, 49, .12);
+    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 0 0, #f4ddaa 0, transparent 27rem),
+        radial-gradient(circle at 100% 12%, #d9efc6 0, transparent 25rem),
+        var(--cream);
+      font-family: Inter, ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
     }
-
-    .header-nav {
+    button, input { font: inherit; }
+    button:focus-visible, input:focus-visible, a:focus-visible {
+      outline: 3px solid #f6a56f;
+      outline-offset: 3px;
+    }
+    .topbar {
+      max-width: 1180px;
+      margin: auto;
+      padding: 24px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: -.04em;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border-radius: 14px;
+      background: var(--green);
+      box-shadow: 0 8px 18px rgba(22,121,79,.2);
+    }
+    .shop-link {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 750;
+      font-size: .9rem;
+      padding: 10px 15px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+    .hero {
+      max-width: 880px;
+      margin: 64px auto 34px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: var(--green-dark);
+      font-weight: 800;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    h1 {
+      margin: 18px auto 14px;
+      max-width: 760px;
+      font-size: clamp(2.5rem, 7vw, 5.2rem);
+      line-height: .95;
+      letter-spacing: -.07em;
+    }
+    .hero-copy {
+      max-width: 610px;
+      margin: auto;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.6;
+    }
+    .search-shell {
+      max-width: 820px;
+      margin: 34px auto 0;
+      padding: 10px;
+      display: flex;
+      gap: 9px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+    #ingredientInput {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      background: transparent;
+      padding: 13px 16px;
+      color: var(--ink);
+      outline: none;
+    }
+    .primary {
+      border: 0;
+      border-radius: 15px;
+      padding: 13px 21px;
+      color: white;
+      background: var(--green);
+      font-weight: 850;
+      cursor: pointer;
+      transition: transform .15s, background .15s;
+    }
+    .primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .quick-picks {
+      margin-top: 15px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 16px;
-      padding: 20px;
-      background: #1e293b;
-      border-bottom: 1px solid #334155;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin: 10px 0 4px;
-      color: #4ade80;
-    }
-
-    .tagline {
-      text-align: center;
-      color: #cbd5e1;
-      margin-top: 0;
-    }
-
-    .input-group {
-      max-width: 640px;
-      margin: 24px auto;
-      display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 8px;
+      color: var(--muted);
+      font-size: .86rem;
     }
-
-    input[type="text"] {
-      flex: 1 1 250px;
-      padding: 12px;
-      border: 1px solid #334155;
+    .chip {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      color: var(--ink);
       border-radius: 999px;
-      background: #1e293b;
-      color: #e2e8f0;
-    }
-
-    button {
-      background: #22c55e;
-      color: #0f172a;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 999px;
+      padding: 7px 11px;
       cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.3);
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s;
     }
-
-    button:hover {
-      background: #16a34a;
-      transform: translateY(-1px);
-      box-shadow: 0 15px 25px -5px rgba(34, 197, 94, 0.4);
+    .chip:hover { border-color: var(--green); color: var(--green); }
+    main { max-width: 1180px; margin: auto; padding: 22px 24px 70px; }
+    .results-head {
+      display: none;
+      justify-content: space-between;
+      align-items: end;
+      margin: 20px 0;
+      gap: 20px;
     }
-
-    .btn-amazon {
-      background: #f97316;
-      color: #0f172a;
+    .results-head.visible { display: flex; }
+    .results-head h2 { margin: 0; font-size: 1.65rem; letter-spacing: -.035em; }
+    .results-head p { color: var(--muted); margin: 5px 0 0; }
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
-
-    .btn-amazon:hover {
-      background: #ea580c;
+    .recipe-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 12px 35px rgba(38,68,54,.08);
+      animation: rise .35s ease both;
     }
-
-    #recipe {
-      max-width: 720px;
-      margin: 0 auto 32px;
-      background: #1e293b;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      border: 1px solid #334155;
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+    .card-top {
+      min-height: 158px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(135deg, var(--card-color, #e5f3d0), #fff7e5);
     }
-
-    .disclosure {
-      font-size: 0.8em;
-      color: #94a3b8;
-      margin-top: 40px;
-      padding: 15px;
-      border-top: 1px solid #334155;
+    .dish-icon { font-size: 3.1rem; filter: drop-shadow(0 6px 8px rgba(0,0,0,.08)); }
+    .match {
+      align-self: flex-start;
+      border-radius: 999px;
+      padding: 6px 9px;
+      background: rgba(255,255,255,.78);
+      font-size: .74rem;
+      font-weight: 850;
+    }
+    .card-body { padding: 21px; display: flex; flex-direction: column; flex: 1; }
+    .meta { display: flex; gap: 7px; flex-wrap: wrap; color: var(--muted); font-size: .78rem; }
+    .meta span { background: #f3f6f4; border-radius: 8px; padding: 5px 7px; }
+    .recipe-card h3 { margin: 14px 0 8px; font-size: 1.28rem; letter-spacing: -.025em; }
+    .description { margin: 0 0 18px; color: var(--muted); line-height: 1.5; font-size: .92rem; }
+    .ingredient-status { margin-top: auto; font-size: .84rem; line-height: 1.5; }
+    .have { color: var(--green); font-weight: 750; }
+    .need { color: #a64b20; }
+    .view-btn {
+      margin-top: 17px;
+      width: 100%;
+      padding: 11px;
+      border: 1px solid var(--green);
+      border-radius: 12px;
+      color: var(--green);
+      background: white;
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .view-btn:hover { color: white; background: var(--green); }
+    dialog {
+      width: min(720px, calc(100% - 28px));
+      max-height: 90vh;
+      padding: 0;
+      border: 0;
+      border-radius: 25px;
+      color: var(--ink);
+      box-shadow: 0 30px 90px rgba(0,0,0,.3);
+    }
+    dialog::backdrop { background: rgba(14,34,27,.63); backdrop-filter: blur(4px); }
+    .modal-inner { padding: 27px; overflow-y: auto; max-height: 90vh; }
+    .close {
+      float: right;
+      width: 38px; height: 38px;
+      border: 0; border-radius: 50%;
+      background: #eef3ef; cursor: pointer;
+      font-size: 1.2rem;
+    }
+    .modal-kicker { color: var(--green); font-weight: 850; margin: 5px 0 8px; }
+    dialog h2 { margin: 0 42px 8px 0; font-size: 2rem; letter-spacing: -.04em; }
+    .servings-row { display: flex; align-items: center; gap: 11px; margin: 20px 0; }
+    .serving-btn { border: 1px solid var(--line); background: white; width: 33px; height: 33px; border-radius: 10px; cursor: pointer; }
+    .detail-columns { display: grid; grid-template-columns: .9fr 1.1fr; gap: 27px; }
+    dialog h4 { margin: 12px 0 10px; font-size: 1rem; }
+    .ingredients, .steps { padding-left: 20px; margin: 0; }
+    .ingredients li, .steps li { margin: 0 0 10px; line-height: 1.5; }
+    .ingredients a { color: var(--green); text-decoration-style: dotted; text-underline-offset: 3px; }
+    .empty {
+      grid-column: 1 / -1;
+      padding: 45px;
       text-align: center;
-      background: #1e293b;
+      border: 1px dashed #afc3b6;
+      border-radius: 24px;
+      color: var(--muted);
+      background: rgba(255,255,255,.55);
     }
-
-    .ingredient-link {
-      color: #4ade80;
-      text-decoration: none;
-      border-bottom: 1px dashed #4ade80;
-    }
-
-    .ingredient-link:hover {
-      color: #86efac;
-      border-bottom-style: solid;
-    }
-
-    .logo {
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 24px;
       text-align: center;
-      font-size: 3rem;
-      margin-bottom: 0;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.6;
     }
-
-    .demo-link {
-      display: block;
-      text-align: center;
-      margin-top: 10px;
-      color: #4ade80;
-      font-weight: bold;
+    @media (max-width: 850px) {
+      .recipe-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .detail-columns { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 570px) {
+      .topbar { padding: 17px 17px 0; }
+      .shop-link { font-size: 0; }
+      .shop-link::after { content: "Shop 🛒"; font-size: .82rem; }
+      .hero { margin-top: 48px; padding: 0 17px; }
+      .search-shell { flex-direction: column; border-radius: 19px; }
+      #ingredientInput { text-align: center; }
+      main { padding-left: 17px; padding-right: 17px; }
+      .recipe-grid { grid-template-columns: 1fr; }
+      .results-head { align-items: start; flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <div class="header-nav">
-    <div class="logo">🍳</div>
-    <a href="https://www.amazon.co.uk/shop/mbm03" target="_blank">
-      <button class="btn-amazon">🛒 Shop My Amazon Storefront</button>
-    </a>
-  </div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">🍳</span> PantrySpin</div>
+    <a class="shop-link" href="https://www.amazon.co.uk/shop/mbm03" target="_blank" rel="noopener sponsored">Shop kitchen favourites 🛒</a>
+  </header>
 
-  <h1>PantrySpin</h1>
-  <p class="tagline">Spin your pantry ingredients into delicious meals!</p>
+  <section class="hero">
+    <span class="eyebrow">Waste less · Cook more</span>
+    <h1>Your pantry has plans for dinner.</h1>
+    <p class="hero-copy">Tell us what you have. We’ll match it with quick, flexible recipes and show you exactly what’s missing.</p>
+    <form class="search-shell" id="recipeForm">
+      <input id="ingredientInput" type="text" autocomplete="off" aria-label="Your ingredients" placeholder="Try: chicken, rice, tomatoes, garlic…" />
+      <button class="primary" type="submit">Spin my pantry →</button>
+    </form>
+    <div class="quick-picks" aria-label="Ingredient suggestions">
+      <span>Quick add:</span>
+      <button class="chip" type="button" data-add="chicken">chicken</button>
+      <button class="chip" type="button" data-add="pasta">pasta</button>
+      <button class="chip" type="button" data-add="eggs">eggs</button>
+      <button class="chip" type="button" data-add="rice">rice</button>
+      <button class="chip" type="button" data-add="tomatoes">tomatoes</button>
+      <button class="chip" type="button" data-add="chickpeas">chickpeas</button>
+    </div>
+  </section>
 
-  <div class="input-group">
-    <input
-      type="text"
-      id="ingredientInput"
-      placeholder="Enter ingredients (e.g., garlic, olive oil, pasta)"
-    />
-    <button onclick="getRecipe()">✨ Get Recipe</button>
-  </div>
+  <main>
+    <div class="results-head" id="resultsHead">
+      <div><h2 id="resultsTitle">Best matches</h2><p id="resultsCopy"></p></div>
+      <button class="chip" type="button" id="showAll">Show all recipes</button>
+    </div>
+    <section class="recipe-grid" id="recipeGrid" aria-live="polite"></section>
+  </main>
 
-  <div id="recipe"></div>
+  <dialog id="recipeDialog" aria-labelledby="dialogTitle">
+    <div class="modal-inner">
+      <button class="close" type="button" id="closeDialog" aria-label="Close">×</button>
+      <div id="recipeDetail"></div>
+    </div>
+  </dialog>
 
-  <a href="affiliate-demo.html" class="demo-link">View Amazon Affiliate Demo Page</a>
-
-  <footer class="disclosure">
-    <p>As an Amazon Associate, I earn from qualifying purchases. This helps support PantrySpin at no extra cost to you!</p>
+  <footer>
+    As an Amazon Associate, PantrySpin earns from qualifying purchases made through ingredient links, at no extra cost to you.<br />
+    Recipe timings are estimates. Always check food is thoroughly cooked and follow relevant allergy guidance.
   </footer>
 
   <script>
-    const ASSOCIATE_TAG = 'mbm03-21';
+    const ASSOCIATE_TAG = "mbm03-21";
+    const pantryStaples = ["salt", "pepper", "oil", "olive oil", "water"];
     const recipes = [
       {
-        name: "Pasta Aglio e Olio",
-        servings: 4,
-        ingredients: ["spaghetti", "garlic", "olive oil", "red pepper flakes", "parsley"],
-        instructions: [
-          "Boil pasta in salted water until al dente.",
-          "Sauté thinly sliced garlic and red pepper flakes in olive oil over low heat until fragrant.",
-          "Toss pasta with the garlic oil and a splash of pasta water.",
-          "Garnish with fresh parsley."
-        ]
+        name: "Garlic Tomato Pasta", icon: "🍝", time: 25, difficulty: "Easy", diet: "Vegetarian", servings: 2, color: "#f7cfad",
+        description: "A glossy, garlicky tomato pasta made from weeknight staples.",
+        ingredients: [["pasta", 200, "g"], ["tomatoes", 300, "g"], ["garlic", 2, "cloves"], ["olive oil", 2, "tbsp"], ["chilli flakes", 0.5, "tsp"], ["parmesan", 30, "g"]],
+        steps: ["Cook the pasta in well-salted water until al dente. Save a mug of pasta water.", "Warm the oil in a pan and gently cook the sliced garlic and chilli for 1 minute.", "Add chopped tomatoes and simmer for 8–10 minutes until saucy.", "Toss in the drained pasta with a splash of pasta water. Finish with parmesan."]
+      },
+      {
+        name: "Golden Chicken & Rice", icon: "🍗", time: 35, difficulty: "Easy", diet: "High protein", servings: 4, color: "#f3d98f",
+        description: "One-pan spiced chicken and fluffy rice with very little washing up.",
+        ingredients: [["chicken", 500, "g"], ["rice", 300, "g"], ["onion", 1, ""], ["garlic", 2, "cloves"], ["stock", 650, "ml"], ["paprika", 2, "tsp"], ["peas", 120, "g"]],
+        steps: ["Season chopped chicken with paprika, salt and pepper.", "Brown the chicken in a deep lidded pan, then set aside.", "Soften the chopped onion and garlic, stir in the rice, then pour in the stock.", "Return the chicken, cover and simmer gently for 18 minutes. Stir in peas for the final 3 minutes."]
+      },
+      {
+        name: "Crispy Chickpea Curry", icon: "🥘", time: 30, difficulty: "Easy", diet: "Vegan", servings: 3, color: "#f0c96d",
+        description: "Creamy, warming and built around a humble tin of chickpeas.",
+        ingredients: [["chickpeas", 400, "g"], ["coconut milk", 400, "ml"], ["tomatoes", 200, "g"], ["onion", 1, ""], ["garlic", 2, "cloves"], ["curry powder", 2, "tbsp"], ["spinach", 100, "g"]],
+        steps: ["Cook the chopped onion in a little oil until soft.", "Add garlic and curry powder and stir for 30 seconds.", "Add drained chickpeas, tomatoes and coconut milk. Simmer for 15 minutes.", "Fold through spinach until wilted. Season and serve with rice or flatbread."]
+      },
+      {
+        name: "Veggie Egg Fried Rice", icon: "🍳", time: 15, difficulty: "Very easy", diet: "Vegetarian", servings: 2, color: "#ddefa9",
+        description: "The fastest way to turn leftover rice and stray vegetables into lunch.",
+        ingredients: [["cooked rice", 400, "g"], ["eggs", 2, ""], ["mixed vegetables", 200, "g"], ["spring onion", 2, ""], ["soy sauce", 2, "tbsp"], ["sesame oil", 1, "tsp"]],
+        steps: ["Heat a wide pan or wok until hot. Stir-fry the vegetables for 3 minutes.", "Push them aside, add beaten eggs and scramble until just set.", "Add cold cooked rice and toss over high heat until piping hot.", "Stir in soy sauce and sesame oil. Top with sliced spring onion."]
+      },
+      {
+        name: "Cheesy Potato Frittata", icon: "🥔", time: 30, difficulty: "Easy", diet: "Gluten-free", servings: 4, color: "#f7df9d",
+        description: "Crisp potatoes, tender eggs and bubbling cheese in one satisfying pan.",
+        ingredients: [["eggs", 6, ""], ["potatoes", 350, "g"], ["onion", 1, ""], ["cheddar", 100, "g"], ["spinach", 80, "g"], ["milk", 50, "ml"]],
+        steps: ["Thinly slice the potatoes and onion. Cook in an ovenproof pan with oil for 10 minutes.", "Beat the eggs with milk, half the cheese, salt and pepper.", "Add spinach to the pan, then pour over the egg mixture.", "Scatter with remaining cheese. Cook gently for 5 minutes, then grill until golden and set."]
+      },
+      {
+        name: "Tuna Sweetcorn Pasta", icon: "🐟", time: 20, difficulty: "Very easy", diet: "High protein", servings: 3, color: "#c9e5df",
+        description: "Creamy comfort food using dependable cupboard ingredients.",
+        ingredients: [["pasta", 250, "g"], ["tuna", 145, "g"], ["sweetcorn", 150, "g"], ["cream cheese", 120, "g"], ["lemon", 0.5, ""], ["peas", 100, "g"]],
+        steps: ["Cook pasta according to the packet, adding peas for the final 3 minutes.", "Reserve a little cooking water, then drain.", "Stir in tuna, sweetcorn, cream cheese and lemon juice.", "Loosen with pasta water, season generously and serve."]
+      },
+      {
+        name: "Black Bean Quesadillas", icon: "🌮", time: 18, difficulty: "Easy", diet: "Vegetarian", servings: 2, color: "#efb881",
+        description: "Crisp tortillas packed with smoky beans and melting cheese.",
+        ingredients: [["tortillas", 4, ""], ["black beans", 240, "g"], ["cheddar", 120, "g"], ["sweetcorn", 100, "g"], ["paprika", 1, "tsp"], ["lime", 1, ""]],
+        steps: ["Mash half the drained beans with paprika, salt and a squeeze of lime.", "Spread over two tortillas and top with remaining beans, corn and grated cheese.", "Cover with the other tortillas and cook in a dry pan for 2–3 minutes per side.", "Cut into wedges and serve with lime."]
+      },
+      {
+        name: "Lentil Tomato Soup", icon: "🥣", time: 35, difficulty: "Easy", diet: "Vegan", servings: 4, color: "#e9a884",
+        description: "A hearty, budget-friendly soup that freezes beautifully.",
+        ingredients: [["red lentils", 180, "g"], ["tomatoes", 400, "g"], ["carrots", 2, ""], ["onion", 1, ""], ["garlic", 2, "cloves"], ["stock", 900, "ml"], ["cumin", 1, "tsp"]],
+        steps: ["Soften chopped onion and carrots in a large saucepan for 7 minutes.", "Add garlic and cumin and cook for 30 seconds.", "Stir in rinsed lentils, tomatoes and stock.", "Simmer for 22 minutes until tender. Blend partly or fully, then season."]
+      },
+      {
+        name: "Peanut Noodles", icon: "🍜", time: 15, difficulty: "Very easy", diet: "Vegan option", servings: 2, color: "#e8c58f",
+        description: "Silky, savoury noodles with a punchy five-minute peanut sauce.",
+        ingredients: [["noodles", 200, "g"], ["peanut butter", 3, "tbsp"], ["soy sauce", 2, "tbsp"], ["lime", 1, ""], ["garlic", 1, "clove"], ["cucumber", 0.5, ""], ["chilli sauce", 1, "tsp"]],
+        steps: ["Cook noodles according to the packet and reserve a little cooking water.", "Whisk peanut butter, soy sauce, lime juice, grated garlic and chilli sauce.", "Add enough warm noodle water to make a silky sauce.", "Toss with noodles and top with sliced cucumber."]
+      },
+      {
+        name: "Mediterranean Traybake", icon: "🫑", time: 40, difficulty: "Easy", diet: "Vegan", servings: 4, color: "#d8e6aa",
+        description: "Colourful roasted vegetables and chickpeas with almost no hands-on work.",
+        ingredients: [["chickpeas", 400, "g"], ["courgette", 1, ""], ["peppers", 2, ""], ["tomatoes", 250, "g"], ["red onion", 1, ""], ["olive oil", 3, "tbsp"], ["oregano", 2, "tsp"]],
+        steps: ["Heat the oven to 210°C (190°C fan).", "Chop vegetables into bite-sized pieces and add to a large tray with drained chickpeas.", "Toss with olive oil, oregano, salt and pepper.", "Roast for 30–35 minutes, turning once, until golden at the edges."]
+      },
+      {
+        name: "Banana Oat Pancakes", icon: "🥞", time: 15, difficulty: "Very easy", diet: "Vegetarian", servings: 2, color: "#f3d9a8",
+        description: "Soft breakfast pancakes made with just a handful of basics.",
+        ingredients: [["banana", 2, ""], ["oats", 100, "g"], ["eggs", 2, ""], ["milk", 80, "ml"], ["cinnamon", 0.5, "tsp"], ["baking powder", 1, "tsp"]],
+        steps: ["Blend all ingredients into a thick, mostly smooth batter.", "Heat a lightly oiled non-stick pan over medium-low heat.", "Add small ladlefuls and cook for 2 minutes until bubbles appear.", "Flip and cook for another minute. Serve warm."]
+      },
+      {
+        name: "Creamy Mushroom Toast", icon: "🍄", time: 15, difficulty: "Easy", diet: "Vegetarian", servings: 2, color: "#d7c9b3",
+        description: "Golden mushrooms in a creamy garlic sauce piled onto crisp toast.",
+        ingredients: [["mushrooms", 300, "g"], ["bread", 4, "slices"], ["garlic", 1, "clove"], ["cream cheese", 80, "g"], ["thyme", 1, "tsp"], ["lemon", 0.5, ""]],
+        steps: ["Toast the bread until crisp.", "Cook sliced mushrooms in a hot pan until deeply golden.", "Add garlic and thyme for 30 seconds, then stir in cream cheese.", "Loosen with a splash of water, add lemon juice, season and spoon over toast."]
       }
     ];
 
-    function getRecipe() {
-      const input = document.getElementById('ingredientInput').value.toLowerCase();
-      if (!input.trim()) { alert('Please enter some ingredients!'); return; }
-      displayRecipe(recipes[0]);
+    const aliases = {
+      tomato: "tomatoes", tomatoes: "tomatoes", noodle: "noodles", noodles: "noodles",
+      egg: "eggs", eggs: "eggs", potato: "potatoes", potatoes: "potatoes",
+      chickpea: "chickpeas", chickpeas: "chickpeas", bean: "beans", beans: "beans",
+      pepper: "peppers", peppers: "peppers", mushroom: "mushrooms", mushrooms: "mushrooms",
+      lentil: "lentils", lentils: "lentils", tortilla: "tortillas", tortillas: "tortillas"
+    };
+
+    const form = document.getElementById("recipeForm");
+    const input = document.getElementById("ingredientInput");
+    const grid = document.getElementById("recipeGrid");
+    const head = document.getElementById("resultsHead");
+    const copy = document.getElementById("resultsCopy");
+    const dialog = document.getElementById("recipeDialog");
+    const detail = document.getElementById("recipeDetail");
+    let currentRecipe = null;
+    let currentServings = 2;
+    let lastIngredients = [];
+
+    function normalise(value) {
+      const cleaned = value.toLowerCase().trim().replace(/[^a-z\s-]/g, "");
+      return aliases[cleaned] || cleaned;
     }
 
-    function displayRecipe(recipe) {
-      const recipeDiv = document.getElementById('recipe');
-      recipeDiv.innerHTML = `
-        <h2>${recipe.name}</h2>
-        <p><strong>Servings:</strong> ${recipe.servings}</p>
-        <h3>Ingredients:</h3>
-        <ul>
-          ${recipe.ingredients.map(ing => {
-            const amazonUrl = "https://www.amazon.co.uk/s?k=" + encodeURIComponent(ing) + "&tag=" + ASSOCIATE_TAG;
-            return "<li><a href=\"" + amazonUrl + "\" class=\"ingredient-link\" target=\"_blank\">" + ing + "</a></li>";
-          }).join('')}
-        </ul>
-        <h3>Instructions:</h3>
-        <ol>
-          ${recipe.instructions.map(step => "<li>" + step + "</li>").join('')}
-        </ol>
-      `;
+    function parseIngredients(value) {
+      return [...new Set(value.split(/,|\band\b/).map(normalise).filter(Boolean))];
     }
-  </script>
 
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617858925531368"
-    crossorigin="anonymous">
+    function ingredientMatches(needed, owned) {
+      const target = normalise(needed.replace(/^cooked /, ""));
+      return owned.some(item => target.includes(item) || item.includes(target));
+    }
+
+    function scoreRecipe(recipe, owned) {
+      const useful = recipe.ingredients.filter(([name]) => !pantryStaples.includes(normalise(name)));
+      const matched = useful.filter(([name]) => ingredientMatches(name, owned));
+      return { recipe, matched: matched.length, total: useful.length, percent: Math.round(matched.length / useful.length * 100) };
+    }
+
+    function searchRecipes(showAll = false) {
+      lastIngredients = parseIngredients(input.value);
+      if (!lastIngredients.length && !showAll) {
+        input.focus();
+        input.placeholder = "Add at least one ingredient first…";
+        return;
+      }
+
+      let scored = recipes.map(recipe => scoreRecipe(recipe, lastIngredients))
+        .sort((a, b) => b.matched - a.matched || a.recipe.time - b.recipe.time);
+
+      if (!showAll) scored = scored.filter(item => item.matched > 0).slice(0, 9);
+      head.classList.add("visible");
+      copy.textContent = showAll
+        ? recipes.length + " flexible ideas to explore"
+        : scored.length
+          ? "Ranked by how many of your ingredients each recipe uses"
+          : "Try a broader ingredient such as rice, pasta, eggs or tomatoes";
+      renderCards(scored);
+    }
+
+    function renderCards(items) {
+      if (!items.length) {
+        grid.innerHTML = '<div class="empty"><strong>No close matches yet.</strong><br>Add another ingredient or choose “Show all recipes”.</div>';
+        return;
+      }
+      grid.innerHTML = items.map((item, index) => {
+        const { recipe, matched, total, percent } = item;
+        const have = recipe.ingredients.filter(([name]) => ingredientMatches(name, lastIngredients)).map(([name]) => name);
+        const need = recipe.ingredients.filter(([name]) => !ingredientMatches(name, lastIngredients) && !pantryStaples.includes(normalise(name))).map(([name]) => name);
+        return `
+          <article class="recipe-card" style="animation-delay:${index * 35}ms">
+            <div class="card-top" style="--card-color:${recipe.color}">
+              <span class="dish-icon" aria-hidden="true">${recipe.icon}</span>
+              <span class="match">${lastIngredients.length ? percent + "% ingredient match" : "Recipe idea"}</span>
+            </div>
+            <div class="card-body">
+              <div class="meta"><span>⏱ ${recipe.time} min</span><span>${recipe.difficulty}</span><span>${recipe.diet}</span></div>
+              <h3>${recipe.name}</h3>
+              <p class="description">${recipe.description}</p>
+              <div class="ingredient-status">
+                ${have.length ? '<div class="have">✓ Uses: ' + have.join(", ") + '</div>' : ""}
+                <div class="need">${need.length ? "You may need: " + need.slice(0, 3).join(", ") + (need.length > 3 ? "…" : "") : "You have the key ingredients!"}</div>
+              </div>
+              <button class="view-btn" type="button" data-recipe="${recipes.indexOf(recipe)}">View recipe</button>
+            </div>
+          </article>`;
+      }).join("");
+    }
+
+    function formatAmount(amount) {
+      if (Number.isInteger(amount)) return amount;
+      return Math.round(amount * 10) / 10;
+    }
+
+    function renderDetail() {
+      const ratio = currentServings / currentRecipe.servings;
+      detail.innerHTML = `
+        <p class="modal-kicker">${currentRecipe.icon} ${currentRecipe.time} minutes · ${currentRecipe.diet}</p>
+        <h2 id="dialogTitle">${currentRecipe.name}</h2>
+        <p class="description">${currentRecipe.description}</p>
+        <div class="servings-row">
+          <strong>Servings</strong>
+          <button class="serving-btn" type="button" data-serving="-1" aria-label="Fewer servings">−</button>
+          <span id="servingCount">${currentServings}</span>
+          <button class="serving-btn" type="button" data-serving="1" aria-label="More servings">+</button>
+        </div>
+        <div class="detail-columns">
+          <section>
+            <h4>Ingredients</h4>
+            <ul class="ingredients">
+              ${currentRecipe.ingredients.map(([name, amount, unit]) => {
+                const url = "https://www.amazon.co.uk/s?k=" + encodeURIComponent(name) + "&tag=" + ASSOCIATE_TAG;
+                return '<li><strong>' + formatAmount(amount * ratio) + (unit ? " " + unit : "") + '</strong> <a href="' + url + '" target="_blank" rel="noopener sponsored">' + name + '</a></li>';
+              }).join("")}
+            </ul>
+          </section>
+          <section>
+            <h4>How to make it</h4>
+            <ol class="steps">${currentRecipe.steps.map(step => "<li>" + step + "</li>").join("")}</ol>
+          </section>
+        </div>`;
+    }
+
+    form.addEventListener("submit", event => { event.preventDefault(); searchRecipes(); });
+    document.querySelectorAll("[data-add]").forEach(button => {
+      button.addEventListener("click", () => {
+        const parts = parseIngredients(input.value);
+        const item = button.dataset.add;
+        if (!parts.includes(item)) parts.push(item);
+        input.value = parts.join(", ");
+        input.focus();
+      });
+    });
+    document.getElementById("showAll").addEventListener("click", () => searchRecipes(true));
+    grid.addEventListener("click", event => {
+      const button = event.target.closest("[data-recipe]");
+      if (!button) return;
+      currentRecipe = recipes[Number(button.dataset.recipe)];
+      currentServings = currentRecipe.servings;
+      renderDetail();
+      dialog.showModal();
+    });
+    detail.addEventListener("click", event => {
+      const button = event.target.closest("[data-serving]");
+      if (!button) return;
+      currentServings = Math.min(12, Math.max(1, currentServings + Number(button.dataset.serving)));
+      renderDetail();
+    });
+    document.getElementById("closeDialog").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", event => {
+      if (event.target === dialog) dialog.close();
+    });
   </script>
 </body>
 </html>
