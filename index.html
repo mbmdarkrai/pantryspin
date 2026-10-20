@@ -69,6 +69,16 @@
       background: var(--green);
       box-shadow: 0 8px 18px rgba(22,121,79,.2);
     }
+    .top-links { display: flex; align-items: center; gap: 10px; }
+    .nav-link {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 750;
+      font-size: .9rem;
+      padding: 10px 15px;
+      border-radius: 999px;
+    }
+    .nav-link:hover { color: var(--green); }
     .shop-link {
       color: var(--ink);
       text-decoration: none;
@@ -287,7 +297,10 @@
 <body>
   <header class="topbar">
     <div class="brand"><span class="brand-mark" aria-hidden="true">🍳</span> PantrySpin</div>
+    <nav class="top-links">
+      <a class="nav-link" href="blog.html">Blog</a>
     <a class="shop-link" href="https://www.amazon.co.uk/shop/profile/amzn1.account.AGOUTAVO2K5HPYJNVWKMHM4PIEEQ" target="_blank" rel="noopener sponsored">Shop kitchen favourites 🛒</a>
+    </nav>
   </header>
 
   <section class="hero">
