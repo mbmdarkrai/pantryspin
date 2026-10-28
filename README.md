@@ -12,7 +12,7 @@ The site features a direct link to your Amazon Influencer Storefront in the head
 
 ### Affiliate Links
 All ingredient and equipment links are tagged with your Associate ID to earn commissions on qualifying purchases.
-- **Associate Tag**: `mbm1212-21`
+- **Associate Tag**: `manifestcompa-21`
 
 To update the tag globally:
 1. Open `index.html`.
@@ -67,7 +67,7 @@ npm run dev
 
 ## 📝 Adding Recipes
 1. Create a new markdown file in `recipes/` folder.
-2. Add your Amazon affiliate links using the format: `[Product Name](https://www.amazon.co.uk/s?k=product+name&tag=mbm1212-21)`.
+2. Add your Amazon affiliate links using the format: `[Product Name](https://www.amazon.co.uk/s?k=product+name&tag=manifestcompa-21)`.
 3. Update the `recipes` array in `index.html` to include your new recipe metadata for the search feature.
 
 ---

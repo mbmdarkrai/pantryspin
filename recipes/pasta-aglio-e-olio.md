@@ -6,7 +6,7 @@ difficulty: "Easy"
 servings: 4
 prepTime: 5
 cookTime: 15
-img: "/images/pasta-aglio-e-olio.jpg"
+img: "/images/pin-pantry-staples.jpg"
 date: "2024-03-20"
 ---
 
@@ -14,20 +14,20 @@ date: "2024-03-20"
 
 ## Ingredients
 
-- 1 lb (400g) spaghetti or linguine
+- 400g (14 oz) spaghetti or linguine
 - 6-8 cloves garlic, thinly sliced
-- 1/2 cup extra virgin [olive oil](https://www.amazon.co.uk/s?k=extra+virgin+olive+oil&tag=mbm1212-21)
-- 1/2 tsp [red pepper flakes](https://www.amazon.co.uk/s?k=red+pepper+flakes&tag=mbm1212-21) (adjust to taste)
+- 1/2 cup extra virgin [olive oil](https://www.amazon.co.uk/s?k=extra+virgin+olive+oil&tag=manifestcompa-21)
+- 1/2 tsp [red pepper flakes](https://www.amazon.co.uk/s?k=red+pepper+flakes&tag=manifestcompa-21) (adjust to taste)
 - Salt and freshly ground black pepper
 - Fresh parsley for garnish (optional)
 - Grated Parmesan cheese (optional)
 
 ## Equipment
 
-- [Large pasta pot](https://www.amazon.co.uk/s?k=large+pasta+pot&tag=mbm1212-21)
-- [Wooden spoon for stirring](https://www.amazon.co.uk/s?k=wooden+spoon+set&tag=mbm1212-21)
-- [Colander](https://www.amazon.co.uk/s?k=kitchen+colander&tag=mbm1212-21)
-- [Non-stick frying pan](https://www.amazon.co.uk/s?k=non-stick+frying+pan&tag=mbm1212-21)
+- [Large pasta pot](https://www.amazon.co.uk/s?k=large+pasta+pot&tag=manifestcompa-21)
+- [Wooden spoon for stirring](https://www.amazon.co.uk/s?k=wooden+spoon+set&tag=manifestcompa-21)
+- [Colander](https://www.amazon.co.uk/s?k=kitchen+colander&tag=manifestcompa-21)
+- [Non-stick frying pan](https://www.amazon.co.uk/s?k=non-stick+frying+pan&tag=manifestcompa-21)
 
 ## Instructions
 
